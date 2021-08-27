@@ -164,3 +164,4 @@ function htmlGenerator(validWordsLst, num) {
 }
 button.addEventListener('click', onSubmit);
 window.addEventListener('click', closePopUp);
+document.getElementById('year').innerHTML = new Date().getFullYear()
