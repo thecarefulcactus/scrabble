@@ -21,21 +21,22 @@ function onSubmit() {
     const LENGTH_END = document.getElementById("EndR").value;
     let candidateWordLst = conditionChecker(start, middle, end, LENGTH_START, LENGTH_END, engWordsLst)
     candidateWordLst = engineBody(candidateWordLst, letters);
-    let result = pointSorter(candidateWordLst)
+    let result = pointSorter(candidateWordLst);
     openPopUp()
-    let extrasRef = document.getElementById('extras')
-    let headerRef = document.getElementById('bestWord')
-    let pointsRef = document.getElementById('points')
+    let extrasRef = document.getElementById('extras');
+    let headerRef = document.getElementById('bestWord');
+    let pointsRef = document.getElementById('points');
     extrasRef.innerHTML = ''
     pointsRef.innerHTML = ''
     headerRef.innerHTML = ''
     try {
-        pointsRef.innerHTML = result[0][1]
-        headerRef.innerHTML = result[0][0]
+        pointsRef.innerHTML = result[0][1];
+        headerRef.innerHTML = result[0][0];
+        extrasRef.innerHTML = htmlGenerator(result, 9);
     } catch (error) {
-        headerRef.innerHTML = '<br><br><h2 id="extras">Sorry, no words found :(</h2><br><br>'
+        headerRef.innerHTML = '<br><br><h2 id="errorMessage">Sorry, no words found :(</h2><br><br>';
     }
-    extrasRef.innerHTML = htmlGenerator(result, 9)
+    
 }
 //scrabble engine body
 function conditionChecker(start, middle, end, LENGTH_START, LENGTH_END, engWordsLst) {
@@ -156,9 +157,12 @@ function openPopUp(e) {
     popUp.style.display = 'block'
 }
 function htmlGenerator(validWordsLst, num) {
+    if (validWordsLst.length < 9){
+    num = validWordsLst.length;
+    }
     let html = ''
     for (let i = 1; i < num; i++) {
-        html += `<br><h1 id="extras">${validWordsLst[i][0]}</h1>&nbsp; &nbsp; &nbsp; &nbsp; <h2 id="extraspoints">${validWordsLst[i][1]}</h2>`;
+        html += `<br><h1 id="extra">${validWordsLst[i][0]}</h1>&nbsp; &nbsp; &nbsp; &nbsp; <h2 id="extraspoints">${validWordsLst[i][1]}</h2>`;
     }
     return html
 }
