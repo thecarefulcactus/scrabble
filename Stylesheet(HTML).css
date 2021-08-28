@@ -128,12 +128,12 @@
             color: #5d5d81;
             font-size: 50px;
         }
-        #extras {
+        #extras, #errorMessage, extra {
             color: #5d5d81;
         }
-        #points, #extraspoints {
+        #points, #extraspoints, extra {
             color: #3b3355;
         }
-        #bestWord, #points, #extras, #extraspoints {
+        #bestWord, #points, #extras, #extraspoints, extra {
             display: inline;
         }
